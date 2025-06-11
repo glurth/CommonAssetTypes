@@ -1,5 +1,5 @@
 {
-  "name": "com.glurth.commonassettypespackage",
+  "name": "com.glurth.commonassettypes",
   "version": "1.0.0",
   "displayName": "Common Asset Types",
   "description": "Defines common asset types that are used in multiple repos",
