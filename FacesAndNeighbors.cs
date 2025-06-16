@@ -12,6 +12,9 @@ namespace EyE.UnityAssetTypes
         public List<int> triangles = new List<int>();// index of triangles in this face, based upon the triangles list in the meshRef
         [NonReorderable]
         public List<int> neighborIndices = new List<int>();  //index of neighboring faces, based upon the list in FacesAndNeighbors
+        [NonReorderable]
+        public List<int> cornerVertexMeshIndices = new List<int>();  // index of the vertex in the MeshRef for each corner of the face, they are listed in the same order as the neighbor indexes
+        
         public Vector3 normal;
     }
 
