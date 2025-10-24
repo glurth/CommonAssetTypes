@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace EyE.Geometry
 {
-    class GeometryException : System.Exception
+    public class GeometryException : System.Exception
     {
         public GeometryException(string message) : base(message)
         {
