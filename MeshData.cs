@@ -59,6 +59,52 @@ namespace EyE.Geometry
             }
         }
 
+        /// <summary>Sets vertex positions.</summary>
+        public void SetVertices(Vector3[] verts)
+        {
+            vertices = verts;
+        }
+
+        /// <summary>Sets triangle indices.</summary>
+        public void SetTriangles(int[] tris)
+        {
+            triangles = tris;
+        }
+
+        /// <summary>Sets normals. Length must match vertices.</summary>
+        public void SetNormals(Vector3[] normals)
+        {
+            meshNormals = normals;
+        }
+
+        /// <summary>Sets UV data for a given channel. Channel must be 0, 1, or 2.</summary>
+        public void SetUVs(int channel, Vector2[] uvs)
+        {
+            if (channel == 0)
+                meshUV0s = uvs;
+            else if (channel == 1)
+                meshUV1s = uvs;
+            else if (channel == 2)
+                meshUV2s = uvs;
+        }
+        /// <summary>Sets vertex colors.</summary>
+        public void SetColors(Color[] colors)
+        {
+            meshColors = colors;
+        }
+
+        /// <summary>Sets tangents.</summary>
+        public void SetTangents(Vector4[] tangents)
+        {
+            meshTangents = tangents;
+        }
+
+        /// <summary>Sets bounds. You must recompute or manually provide correct value.</summary>
+        public void SetBounds(Bounds b)
+        {
+            bounds = b;
+        }
+
         /// <summary>
         /// Builds a Unity Mesh using the currently stored data.
         /// Must be called on the main Unity thread.
