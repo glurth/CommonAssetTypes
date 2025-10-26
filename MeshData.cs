@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using EyE.UnityAssetTypes;
+using UnityEngine.Rendering;
+
 namespace EyE.Geometry
 {
-
-    using UnityEngine;
-    using UnityEngine.Rendering;
-
     /// <summary>
     /// Thread-safe container for mesh data. Can be created and modified off the main Unity thread.
     /// Only ToMesh() touches UnityEngine.Mesh and must be called on the main thread.
@@ -58,7 +56,7 @@ namespace EyE.Geometry
                 return vertices.Length;
             }
         }
-
+        #region SetXXX functions array params
         /// <summary>Sets vertex positions.</summary>
         public void SetVertices(Vector3[] verts)
         {
@@ -98,6 +96,75 @@ namespace EyE.Geometry
         {
             meshTangents = tangents;
         }
+        #endregion
+        #region SetXXX functions list params
+        /// <summary>Sets vertex positions from a list.</summary>
+        public void SetVertices(System.Collections.Generic.List<Vector3> verts)
+        {
+            if (verts == null)
+            {
+                vertices = null;
+                return;
+            }
+            vertices = verts.ToArray();
+        }
+
+        /// <summary>Sets triangle indices from a list.</summary>
+        public void SetTriangles(System.Collections.Generic.List<int> tris)
+        {
+            if (tris == null)
+            {
+                triangles = null;
+                return;
+            }
+            triangles = tris.ToArray();
+        }
+
+        /// <summary>Sets normals from a list.</summary>
+        public void SetNormals(System.Collections.Generic.List<Vector3> normals)
+        {
+            if (normals == null)
+            {
+                meshNormals = null;
+                return;
+            }
+            meshNormals = normals.ToArray();
+        }
+
+        /// <summary>Sets UV data for a given channel from a list.</summary>
+        public void SetUVs(int channel, System.Collections.Generic.List<Vector2> uvs)
+        {
+            if (channel == 0)
+                meshUV0s = uvs != null ? uvs.ToArray() : null;
+            else if (channel == 1)
+                meshUV1s = uvs != null ? uvs.ToArray() : null;
+            else if (channel == 2)
+                meshUV2s = uvs != null ? uvs.ToArray() : null;
+        }
+
+        /// <summary>Sets vertex colors from a list.</summary>
+        public void SetColors(System.Collections.Generic.List<Color> colors)
+        {
+            if (colors == null)
+            {
+                meshColors = null;
+                return;
+            }
+            meshColors = colors.ToArray();
+        }
+
+        /// <summary>Sets tangents from a list.</summary>
+        public void SetTangents(System.Collections.Generic.List<Vector4> tangents)
+        {
+            if (tangents == null)
+            {
+                meshTangents = null;
+                return;
+            }
+            meshTangents = tangents.ToArray();
+        }
+
+        #endregion
 
         /// <summary>Sets bounds. You must recompute or manually provide correct value.</summary>
         public void SetBounds(Bounds b)
